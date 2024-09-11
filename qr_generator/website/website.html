@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL 2 QR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0070f3;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .qr-code-container {
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>URL 2 QR</h1>
+  <p>Generate QR Codes for your URLs</p>
+  <input type="text" id="url-input" placeholder="Enter URL here">
+  <button onclick="generateQRCode()">Generate QR Code</button>
+  <div class="qr-code-container" id="qr-code-container"></div>
+
+
+  <script>
+    async function generateQRCode() {
+      const url = document.getElementById('url-input').value;
+      const qrCodeContainer = document.getElementById('qr-code-container');
+      qrCodeContainer.innerHTML = '';
+
+      try {
+        const response = await fetch('https://4svonf6ch5.execute-api.eu-west-1.amazonaws.com/prod/qr', {  // Usando tu URL de API Gateway
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ url }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to generate QR Code');
+        }
+
+        const data = await response.json();
+        const img = document.createElement('img');
+        img.src = data.qr_code_url;
+        qrCodeContainer.appendChild(img);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error generating QR Code');
+      }
+    }
+  </script>
+</body>
+</html>
