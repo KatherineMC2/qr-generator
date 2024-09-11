@@ -1,0 +1,30 @@
+name: pr-checks
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+jobs:
+  qr_generator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Python and Poetry
+        run: |
+          python -m pip install --upgrade pip
+          # install your Python dependencies here
+          curl -sSL https://install.python-poetry.org | python3 -
+          # Installing Poetry
+      - name: Installing dependencies
+        run: 
+          poetry install
+      - name: Run linting and formatting
+        run: 
+          poetry run ruff check --diff && poetry run ruff format --check
+
