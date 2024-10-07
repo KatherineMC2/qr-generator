@@ -15,7 +15,7 @@ Architecture as of now:
 
 ## Blog
 
-To discover how was made visit my blog [blog](https://katherinemoreno.me/blog/qr-code-generator/ )
+To discover how was made visit my [blog](https://katherinemoreno.me/blog/qr-code-generator/ )
 
 
 
