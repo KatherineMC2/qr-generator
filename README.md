@@ -13,9 +13,7 @@ Architecture as of now:
 ![Architecture](https://raw.githubusercontent.com/KatherineMC2/qr-generator/a9ffc652d88a6051b11cd66469cf2155cf530e17/architecture.png)
 
 
-## Visit the Website
-
-You can visit the live website here: [QR Code Generator Website](https://d1k35ngx56vy5k.cloudfront.net/)
+## Blog
 
 To discover how was made visit my blog [blog](https://katherinemoreno.me/blog/qr-code-generator/ )
 
